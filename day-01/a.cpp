@@ -22,5 +22,5 @@ int main() {
         }
     }
 
-    std::cout << "result: " << password << std::endl;
+    std::cout << "Result: " << password << std::endl;
 }
