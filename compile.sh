@@ -17,7 +17,7 @@ mkdir -p ./build/day-$day
 
 echo "Compiling day-$day :: problem $problem"
 
-if ! g++ -std=c++11 -o ./build/day-$day/$problem ./day-$day/$problem.cpp; then
+if ! clang++ -std=c++20 -o ./build/day-$day/$problem ./day-$day/$problem.cpp; then
     echo "Failed to compile"
     exit 1
 fi
