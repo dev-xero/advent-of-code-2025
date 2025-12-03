@@ -2,49 +2,55 @@
 #include <iostream>
 #include <string>
 
-long long solve(std::ifstream &in) {
+std::vector<std::string> read_input(std::ifstream& in) {
+    std::vector<std::string> lines;
     std::string line;
-    // We need to first identify the index of the largest
-    // digit.
-    int N = 0;
-    int outputJoltage = 0;
     while (std::getline(in, line)) {
-        if (!N) {
-            N = line.length();
-        }
-        // Find the largest joltage first
-        int firstDigit = 0;
-        int firstIndex = 0;
+        lines.push_back(line);
+    }
+    return lines;
+}
+
+long long solve(std::vector<std::string> lines) {
+    int N = lines[0].length();
+    int output_joltage = 0;
+
+    for (const auto& line : lines) {
+        int first_digit = 0;
+        int first_index = 0;
         for (int i = 0; i < N; i++) {
-            if (line[i] - '0' > firstDigit) {
-                firstDigit = line[i] - '0';
-                firstIndex = i;
+            if (line[i] - '0' > first_digit) {
+                first_digit = line[i] - '0';
+                first_index = i;
             }
         }
-        int secondDigit = 0;
-        int secondIndex = 0;
+
+        int second_digit = 0;
+        int second_index = 0;
         for (int i = 0; i < N; i++) {
-            if (line[i] - '0' > secondDigit && i != firstIndex) {
+            if (line[i] - '0' > second_digit && i != first_index) {
                 // If there are still digits in front of the first index,
                 // this digit cannot make the max possible number.
-                if (i < firstIndex && firstIndex < N - 1) {
+                if (i < first_index && first_index < N - 1) {
                     continue;
                 }
-                secondDigit = line[i] - '0';
-                secondIndex = i;
+                second_digit = line[i] - '0';
+                second_index = i;
             }
         }
-        if (firstIndex < secondIndex) {
-           outputJoltage += firstDigit * 10 + secondDigit;
+
+        if (first_index < second_index) {
+            output_joltage += first_digit * 10 + second_digit;
         } else {
-            outputJoltage += secondDigit * 10 + firstDigit;
+            output_joltage += second_digit * 10 + first_digit;
         }
     }
-    return outputJoltage;
+
+    return output_joltage;
 }
 
 int main() {
-    std::ifstream in("day-03/input.txt");
-    long long totalJoltage = solve(in);
-    std::cout << "total joltage: " << totalJoltage << std::endl;
+    std::ifstream in("day-03/test.txt");
+    long long total_joltage = solve(read_input(in));
+    std::cout << "total joltage: " << total_joltage << std::endl;
 }
