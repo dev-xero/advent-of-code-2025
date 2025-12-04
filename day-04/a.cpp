@@ -54,16 +54,16 @@ long long solve(std::vector<std::vector<char>>& grid) {
 }
 
 std::vector<std::vector<char>> read_input(std::ifstream& in) {
-   std::vector<std::vector<char>> grid;
-   std::string line;
-   while (std::getline(in, line)) {
-       std::vector<char> row;
-       for (const auto& ch : line) {
-           row.push_back(ch);
-       }
-       grid.push_back(row);
-   }
-   return grid;
+    std::vector<std::vector<char>> grid;
+    std::string line;
+    while (std::getline(in, line)) {
+        std::vector<char> row;
+        for (const auto& ch : line) {
+            row.push_back(ch);
+        }
+        grid.push_back(row);
+    }
+    return grid;
 }
 
 int main() {
