@@ -46,7 +46,7 @@ long long solve(std::vector<std::vector<char>>& grid) {
         for (int col = 0; col < M; col++) {
             char cell = grid[row][col];
             if (cell == '@' && adj_fewer_than_four(grid, row, col)) {
-               can_access++;
+                can_access++;
             }
         }
     }
