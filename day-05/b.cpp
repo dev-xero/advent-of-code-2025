@@ -32,18 +32,18 @@ long long solve(PuzzleInput& input) {
     std::sort(ranges.begin(), ranges.end());
 
     long long fresh = 0;
-    long long maxEnd = ranges[0].second;
+    long long max_end = ranges[0].second;
     fresh += ranges[0].second - ranges[0].first + 1;
 
     for (int curr = 1; curr < ranges.size(); curr++) {
-        if (maxEnd >= ranges[curr].first) {
-            if (ranges[curr].second > maxEnd) {
-                fresh += ranges[curr].second - maxEnd;
-                maxEnd = ranges[curr].second;
+        if (max_end >= ranges[curr].first) {
+            if (ranges[curr].second > max_end) {
+                fresh += ranges[curr].second - max_end;
+                max_end = ranges[curr].second;
             }
         } else {
             fresh += ranges[curr].second - ranges[curr].first + 1;
-            maxEnd = ranges[curr].second;
+            max_end = ranges[curr].second;
         }
     }
 
