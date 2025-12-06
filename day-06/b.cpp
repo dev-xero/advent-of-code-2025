@@ -45,7 +45,7 @@ long long solve(std::vector<std::string>& input) {
             }
         }
         // If num is empty, then its time for another bin.
-        if (num.find_first_not_of(' ') == num.npos) {
+        if (num.empty()) {
             bin--;
         } else {
             long long val = std::stoll(num);
