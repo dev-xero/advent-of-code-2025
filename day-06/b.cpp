@@ -15,7 +15,7 @@ std::vector<std::string> read_input(std::ifstream& in) {
 }
 
 long long solve(std::vector<std::string>& input) {
-    // The nature of the problem is different time time.
+    // The nature of the problem is different this time.
     // We read numbers top-down, right-to-left, column to column.
     // Each 'cell' is separated by a column of whitespace.
     std::string& ops = input.back();
